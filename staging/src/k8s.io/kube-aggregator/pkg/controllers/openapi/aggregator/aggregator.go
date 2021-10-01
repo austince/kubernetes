@@ -18,6 +18,7 @@ package aggregator
 
 import (
 	"fmt"
+	"k8s.io/kube-openapi/pkg/common/restfuladapter"
 	"net/http"
 	"strings"
 	"sync"
@@ -81,7 +82,8 @@ func BuildAndRegisterAggregator(downloader *Downloader, delegationTarget server.
 
 	i := 0
 	// Build Aggregator's spec
-	aggregatorOpenAPISpec, err := builder.BuildOpenAPISpec(webServices, config)
+	container := restfuladapter.AdaptWebServices(webServices)
+	aggregatorOpenAPISpec, err := builder.BuildOpenAPISpec(container, config)
 	if err != nil {
 		return nil, err
 	}

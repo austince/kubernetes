@@ -497,7 +497,9 @@ replace (
 	k8s.io/klog/v2 => k8s.io/klog/v2 v2.20.0
 	k8s.io/kube-aggregator => ./staging/src/k8s.io/kube-aggregator
 	k8s.io/kube-controller-manager => ./staging/src/k8s.io/kube-controller-manager
-	k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20210817084001-7fbd8d59e5b8
+	// Forked version to remove framework coupling
+	// see: https://github.com/kubernetes/kube-openapi/issues/250
+	k8s.io/kube-openapi => github.com/austince/kube-openapi v0.0.0-restframework-v2
 	k8s.io/kube-proxy => ./staging/src/k8s.io/kube-proxy
 	k8s.io/kube-scheduler => ./staging/src/k8s.io/kube-scheduler
 	k8s.io/kubectl => ./staging/src/k8s.io/kubectl

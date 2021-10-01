@@ -33,4 +33,7 @@ replace (
 	k8s.io/code-generator => ../code-generator
 	k8s.io/component-base => ../component-base
 	k8s.io/kube-aggregator => ../kube-aggregator
+	// Forked version to remove framework coupling
+	// see: https://github.com/kubernetes/kube-openapi/issues/250
+	k8s.io/kube-openapi => github.com/austince/kube-openapi v0.0.0-restframework-v2
 )

@@ -18,6 +18,7 @@ package builder
 
 import (
 	"fmt"
+	"k8s.io/kube-openapi/pkg/common/restfuladapter"
 	"net/http"
 	"strings"
 	"sync"
@@ -173,7 +174,8 @@ func BuildSwagger(crd *apiextensionsv1.CustomResourceDefinition, version string,
 		b.ws.Route(route)
 	}
 
-	openAPISpec, err := openapibuilder.BuildOpenAPISpec([]*restful.WebService{b.ws}, b.getOpenAPIConfig())
+	container := restfuladapter.AdaptWebServices([]*restful.WebService{b.ws})
+	openAPISpec, err := openapibuilder.BuildOpenAPISpec(container, b.getOpenAPIConfig())
 	if err != nil {
 		return nil, err
 	}

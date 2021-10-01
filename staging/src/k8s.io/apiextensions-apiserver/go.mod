@@ -31,6 +31,10 @@ require (
 	sigs.k8s.io/yaml v1.2.0
 )
 
+// Forked version to remove framework coupling
+// see: https://github.com/kubernetes/kube-openapi/issues/250
+replace k8s.io/kube-openapi => github.com/austince/kube-openapi v0.0.0-restframework-v2
+
 replace (
 	k8s.io/api => ../api
 	k8s.io/apiextensions-apiserver => ../apiextensions-apiserver

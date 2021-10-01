@@ -15,4 +15,7 @@ replace (
 	k8s.io/api => ../../api
 	k8s.io/apimachinery => ../../apimachinery
 	k8s.io/client-go => ../../client-go
+	// Forked version to remove framework coupling
+	// see: https://github.com/kubernetes/kube-openapi/issues/250
+	k8s.io/kube-openapi => github.com/austince/kube-openapi v0.0.0-restframework-v2
 )

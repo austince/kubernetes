@@ -27,4 +27,9 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.1.2 // indirect
 )
 
-replace k8s.io/code-generator => ../code-generator
+replace (
+	k8s.io/code-generator => ../code-generator
+	// Forked version to remove framework coupling
+	// see: https://github.com/kubernetes/kube-openapi/issues/250
+	k8s.io/kube-openapi => github.com/austince/kube-openapi v0.0.0-restframework-v2
+)

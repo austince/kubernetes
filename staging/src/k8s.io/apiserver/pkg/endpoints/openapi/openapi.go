@@ -19,12 +19,11 @@ package openapi
 import (
 	"bytes"
 	"fmt"
+	openapicommon "k8s.io/kube-openapi/pkg/common"
 	"reflect"
 	"sort"
 	"strings"
 	"unicode"
-
-	restful "github.com/emicklei/go-restful"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -59,9 +58,9 @@ func ToValidOperationID(s string, capitalizeFirstLetter bool) string {
 }
 
 // GetOperationIDAndTags returns a customize operation ID and a list of tags for kubernetes API server's OpenAPI spec to prevent duplicate IDs.
-func GetOperationIDAndTags(r *restful.Route) (string, []string, error) {
-	op := r.Operation
-	path := r.Path
+func GetOperationIDAndTags(r openapicommon.Route) (string, []string, error) {
+	op := r.OperationName()
+	path := r.Path()
 	var tags []string
 	prefix, exists := verbs.GetPrefix(op)
 	if !exists {
